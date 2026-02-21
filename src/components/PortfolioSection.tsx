@@ -16,10 +16,15 @@ import { portfolioItems, PortfolioItem } from "../data/portfolioVideos";
 
 const PortfolioSection = () => {
     const [activeCategory, setActiveCategory] = useState("Documentary");
+    const [activeMediaType, setActiveMediaType] = useState("Videos");
     const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
     const [visibleCount, setVisibleCount] = useState(6);
 
-    const filteredItems = portfolioItems.filter(item => item.category === activeCategory);
+    const filteredItems = portfolioItems.filter(item => {
+        const matchesCategory = item.category === activeCategory;
+        const matchesMediaType = activeMediaType === "Videos" ? !item.isImage : item.isImage;
+        return matchesCategory && matchesMediaType;
+    });
     const visibleItems = filteredItems.slice(0, visibleCount);
 
     return (
@@ -35,8 +40,8 @@ const PortfolioSection = () => {
                     </p>
                 </div>
 
-                {/* Filters */}
-                <div className="flex flex-wrap justify-center gap-4 mb-16">
+                {/* Main Category Filters */}
+                <div className="flex flex-wrap justify-center gap-4 mb-8">
                     {categories.map((cat) => (
                         <Button
                             key={cat}
@@ -53,6 +58,28 @@ const PortfolioSection = () => {
                             )}
                         >
                             {cat}
+                        </Button>
+                    ))}
+                </div>
+
+                {/* Media Type Filters (Videos / Images) */}
+                <div className="flex flex-wrap justify-center gap-4 mb-16">
+                    {["Videos", "Images"].map((type) => (
+                        <Button
+                            key={type}
+                            variant={activeMediaType === type ? "default" : "outline"}
+                            onClick={() => {
+                                setActiveMediaType(type);
+                                setVisibleCount(6);
+                            }}
+                            className={cn(
+                                "rounded-full px-8 py-2 text-sm font-medium transition-all duration-300",
+                                activeMediaType === type
+                                    ? "bg-[#f1f5f9] text-[#0C3249] border border-transparent shadow-sm"
+                                    : "bg-white text-[#64748b] border-gray-200 hover:bg-gray-50"
+                            )}
+                        >
+                            {type}
                         </Button>
                     ))}
                 </div>
