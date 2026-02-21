@@ -14,55 +14,7 @@ import GallerySection from "./GallerySection";
 
 const categories = ["All", "Documentary", "Corporate", "Commercial", "Photography"];
 
-interface PortfolioItem {
-    id: number;
-    title: string;
-    category: string;
-    thumbnail: string;
-    videoUrl?: string;
-    duration: string;
-    description: string;
-    isImage?: boolean;
-}
-
-const portfolioItems: PortfolioItem[] = [
-    {
-        id: 1,
-        title: "Life in the Valley",
-        category: "Documentary",
-        thumbnail: "https://images.unsplash.com/photo-1542204165-65bf26472b9b?w=800&q=80",
-        videoUrl: "https://www.youtube.com/embed/ScMzIvxBSi4?si=demo",
-        duration: "4:15",
-        description: "An intimate look into the daily struggles and triumphs of families living in the Rukarara valley.",
-    },
-    {
-        id: 2,
-        title: "Clean Water Initiative",
-        category: "Documentary",
-        thumbnail: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800&q=80",
-        videoUrl: "https://www.youtube.com/embed/LXb3EKWsInQ?si=demo2",
-        duration: "3:45",
-        description: "Documenting the transformative impact of accessible clean water on rural community health and education.",
-    },
-    {
-        id: 3,
-        title: "Tech Summit 2025",
-        category: "Corporate",
-        thumbnail: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80",
-        videoUrl: "https://www.youtube.com/embed/ysz5S6P_z-U?si=demo3",
-        duration: "2:30",
-        description: "Highlights from the largest technology gathering in East Africa, featuring global industry leaders.",
-    },
-    {
-        id: 4,
-        title: "Urban Coffee",
-        category: "Commercial",
-        thumbnail: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80",
-        videoUrl: "https://www.youtube.com/embed/tgbNymZ7vqY?si=demo4",
-        duration: "1:00",
-        description: "A sensory journey through the art of craft coffee, from bean to cup in the heart of the city.",
-    },
-];
+import { portfolioItems, PortfolioItem } from "../data/portfolioVideos";
 
 const PortfolioSection = () => {
     const [activeCategory, setActiveCategory] = useState("All");
