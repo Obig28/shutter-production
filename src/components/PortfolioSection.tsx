@@ -10,19 +10,17 @@ import {
 } from "./ui/dialog";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import GallerySection from "./GallerySection";
-
-const categories = ["All", "Documentary", "Corporate", "Commercial", "Photography"];
+const categories = ["Documentary", "Corporate", "Commercial"];
 
 import { portfolioItems, PortfolioItem } from "../data/portfolioVideos";
 
 const PortfolioSection = () => {
-    const [activeCategory, setActiveCategory] = useState("All");
+    const [activeCategory, setActiveCategory] = useState("Documentary");
     const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+    const [visibleCount, setVisibleCount] = useState(6);
 
-    const filteredItems = activeCategory === "All"
-        ? portfolioItems
-        : portfolioItems.filter(item => item.category === activeCategory);
+    const filteredItems = portfolioItems.filter(item => item.category === activeCategory);
+    const visibleItems = filteredItems.slice(0, visibleCount);
 
     return (
         <section id="portfolio" className="py-24 bg-background">
@@ -43,7 +41,10 @@ const PortfolioSection = () => {
                         <Button
                             key={cat}
                             variant={activeCategory === cat ? "default" : "outline"}
-                            onClick={() => setActiveCategory(cat)}
+                            onClick={() => {
+                                setActiveCategory(cat);
+                                setVisibleCount(6);
+                            }}
                             className={cn(
                                 "rounded-full px-8 py-6 text-base font-semibold transition-all duration-300",
                                 activeCategory === cat
@@ -57,67 +58,66 @@ const PortfolioSection = () => {
                 </div>
 
                 {/* Grid */}
-                {(activeCategory === "All" || activeCategory !== "Photography") && (
-                    <motion.div
-                        layout
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
-                    >
-                        <AnimatePresence mode="popLayout">
-                            {filteredItems.map((item) => (
-                                <motion.div
-                                    layout
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.95 }}
-                                    transition={{ duration: 0.4, ease: "easeOut" }}
-                                    key={item.id}
-                                    className="group relative aspect-video rounded-2xl overflow-hidden cursor-pointer shadow-xl bg-black"
-                                    onClick={() => setSelectedItem(item)}
-                                >
-                                    <img
-                                        src={item.thumbnail}
-                                        alt={item.title}
-                                        className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
-                                    />
+                {/* Grid */}
+                <motion.div
+                    layout
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"
+                >
+                    <AnimatePresence mode="popLayout">
+                        {visibleItems.map((item) => (
+                            <motion.div
+                                layout
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                                transition={{ duration: 0.4, ease: "easeOut" }}
+                                key={item.id}
+                                className="group relative aspect-video rounded-2xl overflow-hidden cursor-pointer shadow-xl bg-black"
+                                onClick={() => setSelectedItem(item)}
+                            >
+                                <img
+                                    src={item.thumbnail}
+                                    alt={item.title}
+                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
+                                />
 
-                                    {/* Cinematic Overlay */}
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
+                                {/* Cinematic Overlay */}
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-500" />
 
-                                    {/* Category Tag */}
-                                    <div className="absolute top-4 left-4">
-                                        <span className="bg-[#0C3249]/90 backdrop-blur-md text-white text-[10px] font-black uppercase tracking-[0.2em] px-3 py-1.5 rounded-sm">
-                                            {item.category}
-                                        </span>
-                                    </div>
-
-                                    {/* Center Play Icon */}
+                                {/* Center Play Icon */}
+                                {!item.isImage && (
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         <div className="w-16 h-16 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full flex items-center justify-center text-white scale-90 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-500 shadow-2xl">
                                             <Play fill="white" size={32} className="ml-1" />
                                         </div>
                                     </div>
+                                )}
 
-                                    {/* Bottom Info */}
-                                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                                        <div className="flex justify-between items-end">
-                                            <h3 className="text-white text-xl font-bold leading-tight max-w-[70%] drop-shadow-lg">
-                                                {item.title}
-                                            </h3>
-                                            <span className="text-white/80 text-xs font-mono mb-1">
-                                                {item.duration}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ))}
-                        </AnimatePresence>
-                    </motion.div>
+                                {/* Category Tag bottom left like screenshot */}
+                                <div className="absolute bottom-4 left-4">
+                                    <span className="text-white text-base font-black uppercase tracking-widest drop-shadow-md">
+                                        {item.category}
+                                    </span>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </AnimatePresence>
+                </motion.div>
+
+                {/* See More Button */}
+                {visibleCount < filteredItems.length && (
+                    <div className="mt-12 text-center">
+                        <Button
+                            variant="outline"
+                            onClick={() => setVisibleCount(prev => prev + 6)}
+                            className="rounded-full px-8 py-6 text-base font-semibold border-[#0C3249] text-[#0C3249] hover:bg-[#0C3249] hover:text-white transition-all duration-300"
+                        >
+                            See More
+                        </Button>
+                    </div>
                 )}
 
-                {/* Photography Gallery Sub-section */}
-                {(activeCategory === "All" || activeCategory === "Photography") && (
-                    <GallerySection isFiltered={activeCategory === "Photography"} />
-                )}
+                {/* Removed Photography Gallery Sub-section since activeCategory "All" is removed */}
 
                 {/* Media Modal */}
                 <Dialog open={!!selectedItem} onOpenChange={() => setSelectedItem(null)}>
@@ -149,22 +149,26 @@ const PortfolioSection = () => {
                             </div>
 
                             {/* Project Info Bar */}
-                            {selectedItem && (
+                            {selectedItem && (selectedItem.title || selectedItem.description) && (
                                 <div className="p-8 bg-zinc-950 text-white">
                                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
                                         <div>
                                             <span className="inline-block bg-[#0C3249] text-[10px] font-black uppercase tracking-widest px-2 py-1 rounded-sm mb-2">
                                                 {selectedItem.category}
                                             </span>
-                                            <h2 className="text-3xl font-bold">{selectedItem.title}</h2>
+                                            {selectedItem.title && <h2 className="text-3xl font-bold">{selectedItem.title}</h2>}
                                         </div>
-                                        <div className="text-zinc-400 font-mono text-lg">
-                                            Duration: {selectedItem.duration}
-                                        </div>
+                                        {selectedItem.duration && (
+                                            <div className="text-zinc-400 font-mono text-lg">
+                                                Duration: {selectedItem.duration}
+                                            </div>
+                                        )}
                                     </div>
-                                    <p className="text-zinc-300 text-lg leading-relaxed max-w-3xl border-l-2 border-[#0C3249] pl-6 italic">
-                                        {selectedItem.description}
-                                    </p>
+                                    {selectedItem.description && (
+                                        <p className="text-zinc-300 text-lg leading-relaxed max-w-3xl border-l-2 border-[#0C3249] pl-6 italic">
+                                            {selectedItem.description}
+                                        </p>
+                                    )}
                                 </div>
                             )}
                         </div>
