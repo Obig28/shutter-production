@@ -45,7 +45,10 @@ const Navbar = () => {
                     <img
                         src={logo}
                         alt="Shutter Production"
-                        className="h-10 md:h-12 w-auto transition-all duration-300"
+                        className={cn(
+                            "h-10 md:h-12 w-auto transition-all duration-300",
+                            !scrolled && "brightness-0 invert"
+                        )}
                     />
                 </a>
 
