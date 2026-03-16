@@ -57,7 +57,7 @@ const HeroCarousel = () => {
                             alt={slides[currentSlide].title}
                             className="w-full h-full object-cover"
                         />
-                        <div className="absolute inset-0 bg-black/60" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
                     </div>
                 </motion.div>
             </AnimatePresence>
@@ -67,10 +67,10 @@ const HeroCarousel = () => {
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={currentSlide}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 30 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: -30 }}
+                        transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
                         className="max-w-4xl mx-auto"
                     >
                         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 tracking-tight leading-tight">
@@ -79,11 +79,11 @@ const HeroCarousel = () => {
                         <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                             {slides[currentSlide].description}
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button size="lg" className="bg-primary text-white border-none text-base h-12 px-8" onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center mt-4">
+                            <Button size="lg" className="bg-[#0C3249] text-white hover:bg-[#0C3249]/90 border-none text-base h-14 px-10 shadow-lg shadow-[#0C3249]/30 transition-all hover:-translate-y-1" onClick={() => document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' })}>
                                 View Portfolio
                             </Button>
-                            <Button size="lg" variant="outline" className="bg-transparent text-white border-white hover:bg-white hover:text-primary text-base h-12 px-8" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                            <Button size="lg" variant="outline" className="bg-transparent text-white border-white/50 hover:bg-white hover:text-[#0C3249] text-base h-14 px-10 backdrop-blur-sm transition-all hover:-translate-y-1" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                                 Request a Quote
                             </Button>
                         </div>

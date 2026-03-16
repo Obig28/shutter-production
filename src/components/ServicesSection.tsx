@@ -56,13 +56,13 @@ const services = [
 
 const ServicesSection = () => {
     return (
-        <section id="services" className="py-24 bg-secondary/30 dark:bg-background">
+        <section id="services" className="py-24 bg-gray-50/50 dark:bg-background">
             <div className="container mx-auto px-4">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary dark:text-foreground">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-[#0C3249] dark:text-foreground tracking-tight">
                         Our Expertise
                     </h2>
-                    <div className="w-20 h-1.5 bg-gold mx-auto rounded-full" />
+                    <div className="w-24 h-1.5 bg-gold mx-auto rounded-full" />
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -71,18 +71,20 @@ const ServicesSection = () => {
                             key={index}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
-                            whileHover={{ y: -5 }}
-                            className="bg-card p-8 rounded-xl shadow-sm border border-border/50 hover:border-gold hover:shadow-md transition-all group"
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
+                            className="bg-white dark:bg-card p-10 rounded-2xl shadow-sm border border-gray-100 hover:border-[#0C3249]/20 hover:shadow-xl transition-all duration-300 group hover:-translate-y-2 relative overflow-hidden"
                         >
-                            <div className="text-primary dark:text-primary-foreground group-hover:text-gold transition-colors mb-6">
+                            {/* Decorative hover gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#0C3249]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
+                            
+                            <div className="text-[#0C3249] group-hover:text-gold transition-colors duration-300 mb-6 transform group-hover:scale-110 origin-left inline-block">
                                 {service.icon}
                             </div>
-                            <h3 className="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-white transition-colors">
+                            <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-[#0C3249] transition-colors duration-300">
                                 {service.title}
                             </h3>
-                            <p className="text-muted-foreground leading-relaxed">
+                            <p className="text-[#64748b] leading-relaxed group-hover:text-gray-700 transition-colors duration-300 relative z-10">
                                 {service.description}
                             </p>
                         </motion.div>

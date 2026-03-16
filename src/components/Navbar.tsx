@@ -59,8 +59,10 @@ const Navbar = () => {
                             key={link.name}
                             href={link.href}
                             className={cn(
-                                "text-sm font-medium transition-colors hover:text-gold",
-                                scrolled ? "text-foreground" : "text-white/80"
+                                "relative text-sm font-semibold transition-colors py-2",
+                                // Animated underline effect
+                                "after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-gold after:scale-x-0 after:origin-right hover:after:scale-x-100 hover:after:origin-left transition-all after:transition-transform after:duration-300",
+                                scrolled ? "text-[#0C3249] hover:text-[#0C3249]" : "text-white/90 hover:text-gold"
                             )}
                         >
                             {link.name}
@@ -68,7 +70,7 @@ const Navbar = () => {
                     ))}
                     <div className="flex items-center gap-4">
                         <ModeToggle />
-                        <Button className="hidden lg:flex" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
+                        <Button className="hidden lg:flex bg-[#0C3249] text-white hover:bg-[#0C3249]/90 shadow-lg shadow-[#0C3249]/20 transition-all hover:-translate-y-0.5" onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}>
                             Request Quote
                         </Button>
                     </div>
@@ -97,16 +99,18 @@ const Navbar = () => {
                             <a
                                 key={link.name}
                                 href={link.href}
-                                className="text-foreground hover:text-gold font-medium py-2"
+                                className="block text-foreground hover:text-[#0C3249] hover:bg-gray-50/50 rounded-lg px-4 font-medium py-3 transition-colors"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.name}
                             </a>
                         ))}
-                        <Button onClick={() => {
-                            setIsOpen(false);
-                            document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-                        }}>
+                        <Button 
+                            className="w-full bg-[#0C3249] text-white hover:bg-[#0C3249]/90 h-12 text-base mt-2"
+                            onClick={() => {
+                                setIsOpen(false);
+                                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                            }}>
                             Request a Quote
                         </Button>
                     </div>

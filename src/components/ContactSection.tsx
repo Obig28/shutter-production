@@ -45,18 +45,21 @@ const ContactSection = () => {
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4 text-primary dark:text-foreground">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-[#0C3249] dark:text-foreground tracking-tight">
                         Let's Create Your Story
                     </h2>
-                    <div className="w-20 h-1.5 bg-gold mx-auto rounded-full" />
+                    <div className="w-24 h-1.5 bg-gold mx-auto rounded-full" />
                 </div>
 
                 <div className="grid lg:grid-cols-2 gap-12 bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden">
                     {/* Contact Info */}
-                    <div className="bg-primary p-12 text-white flex flex-col justify-between">
-                        <div>
+                    <div className="bg-[#0C3249] p-12 text-white flex flex-col justify-between relative overflow-hidden">
+                        {/* Decorative blob inside contact info */}
+                        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -mr-32 -mt-32 pointer-events-none" />
+                        
+                        <div className="relative z-10">
                             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
-                            <p className="text-white/80 mb-12">
+                            <p className="text-white/80 mb-12 text-lg">
                                 Ready to start your next video project? Get in touch with us today.
                             </p>
 
@@ -96,7 +99,7 @@ const ContactSection = () => {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="p-12 bg-background">
+                    <div className="p-12 bg-white dark:bg-card">
                         <form onSubmit={handleSubmit} className="space-y-6">
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
@@ -124,7 +127,7 @@ const ContactSection = () => {
                                 />
                             </div>
 
-                            <Button type="submit" className="w-full text-lg h-12" disabled={isSubmitting}>
+                            <Button type="submit" className="w-full text-lg h-14 bg-[#0C3249] text-white hover:bg-[#0C3249]/90 shadow-lg shadow-[#0C3249]/20 transition-all hover:-translate-y-1 active:scale-95 rounded-xl font-semibold mt-4" disabled={isSubmitting}>
                                 {isSubmitting ? "Sending..." : "Send Message"}
                             </Button>
                         </form>
