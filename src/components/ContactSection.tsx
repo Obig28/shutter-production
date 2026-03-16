@@ -65,7 +65,7 @@ const ContactSection = () => {
                                     <div className="bg-white/10 p-3 rounded-full text-gold">
                                         <Phone size={24} />
                                     </div>
-                                    <span>+250 788 000 000</span>
+                                    <span>+250 789 271 885</span>
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <div className="bg-white/10 p-3 rounded-full text-gold">

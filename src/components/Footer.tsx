@@ -16,7 +16,8 @@ const Footer = () => {
                             <img
                                 src={logo}
                                 alt="Shutter Production"
-                                className="h-16 w-auto invert dark:invert-0"
+                                className="h-16 w-auto brightness-0"
+                                style={{ filter: "brightness(0) saturate(100%) invert(26%) sepia(48%) saturate(1914%) hue-rotate(189deg) brightness(98%) contrast(92%)" }}
                             />
                         </div>
                         <p className="text-muted-foreground max-w-sm mb-6">
@@ -56,7 +57,7 @@ const Footer = () => {
                         <ul className="space-y-4 text-muted-foreground">
                             <li>Kigali, Rwanda</li>
                             <li>hello@shutterproduction.com</li>
-                            <li>+250 788 000 000</li>
+                            <li>+250 789 271 885</li>
                         </ul>
                     </div>
                 </div>
