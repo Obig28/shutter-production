@@ -54,7 +54,7 @@ const PortfolioSection = () => {
                                 "rounded-full px-8 py-6 text-base font-semibold transition-all duration-300",
                                 activeCategory === cat
                                     ? "bg-[#0C3249] text-white hover:bg-[#0C3249]/90 shadow-lg shadow-[#0C3249]/20"
-                                    : "bg-white text-[#0C3249] border-[#0C3249] hover:bg-[#0C3249]/5"
+                                    : "bg-white text-[#0C3249] border-[#0C3249] hover:bg-gray-50 hover:text-[#0C3249]"
                             )}
                         >
                             {cat}
@@ -62,9 +62,9 @@ const PortfolioSection = () => {
                     ))}
                 </div>
 
-                {/* Media Type Filters (Videos / Images) */}
+                {/* Media Type Filters (Videos / Frames) */}
                 <div className="flex flex-wrap justify-center gap-4 mb-16">
-                    {["Videos", "Images"].map((type) => (
+                    {["Videos", "Frames"].map((type) => (
                         <Button
                             key={type}
                             variant={activeMediaType === type ? "default" : "outline"}
@@ -105,6 +105,8 @@ const PortfolioSection = () => {
                                 <img
                                     src={item.thumbnail}
                                     alt={item.title}
+                                    loading="lazy"
+                                    decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
                                 />
 
