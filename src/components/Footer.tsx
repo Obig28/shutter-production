@@ -17,7 +17,7 @@ const Footer = () => {
                                 src={logo}
                                 alt="Shutter Production"
                                 className="h-16 w-auto brightness-0"
-                                style={{ filter: "brightness(0) saturate(100%) invert(26%) sepia(48%) saturate(1914%) hue-rotate(189deg) brightness(98%) contrast(92%)" }}
+                                style={{ filter: "brightness(0) saturate(100%) invert(13%) sepia(86%) saturate(1478%) hue-rotate(185deg) brightness(98%) contrast(92%)" }}
                             />
                         </div>
                         <p className="text-muted-foreground max-w-sm mb-6">
