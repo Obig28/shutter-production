@@ -9,7 +9,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 const slides = [
     {
         id: 1,
-        image: "https://harmless-tapir-303.convex.cloud/api/storage/832ab8d8-7953-48b0-a0f1-09415c81dcc3",
+        image: "https://ibb.co/F4Fs6YJD",
         title: "Professional Production",
         description: "From concept to final cut, we deliver excellence.",
     },
