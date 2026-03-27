@@ -4,8 +4,6 @@ import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-import heroBg from "@/assets/hero-bg.jpg";
-
 const slides = [
     {
         id: 1,
