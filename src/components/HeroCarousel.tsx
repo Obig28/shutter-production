@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 const slides = [
     {
         id: 1,
-        image: "https://ibb.co/F4Fs6YJD",
+        image: "https://i.ibb.co/5hPYTjvR/122-A9424-2.jpg",
         title: "Professional Production",
         description: "From concept to final cut, we deliver excellence.",
     },
