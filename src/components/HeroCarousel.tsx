@@ -29,6 +29,12 @@ const HeroCarousel = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
 
     useEffect(() => {
+        // Preload all images so they are cached before the slide transitions
+        slides.forEach((slide) => {
+            const img = new Image();
+            img.src = slide.image;
+        });
+
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % slides.length);
         }, 6000);
@@ -54,6 +60,7 @@ const HeroCarousel = () => {
                             src={slides[currentSlide].image}
                             alt={slides[currentSlide].title}
                             className="w-full h-full object-cover"
+                            loading="eager"
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/50 to-black/80" />
                     </div>
