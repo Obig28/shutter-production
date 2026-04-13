@@ -74,7 +74,7 @@ const ContactSection = () => {
                                     <div className="bg-white/10 p-3 rounded-full text-gold">
                                         <Mail size={24} />
                                     </div>
-                                    <span>hello@shutterproduction.com</span>
+                                    <span>mserge96@gmail.com</span>
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <div className="bg-white/10 p-3 rounded-full text-gold">

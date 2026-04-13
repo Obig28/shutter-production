@@ -56,7 +56,7 @@ const Footer = () => {
                         <h4 className="font-bold text-lg mb-6 text-foreground">Contact</h4>
                         <ul className="space-y-4 text-muted-foreground">
                             <li>Kigali, Rwanda</li>
-                            <li>hello@shutterproduction.com</li>
+                            <li>mserge96@gmail.com</li>
                             <li>+250 789 271 885</li>
                         </ul>
                     </div>
