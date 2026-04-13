@@ -48,7 +48,7 @@ const AboutSection = () => {
                             <div className="absolute -inset-4 md:-inset-6 bg-[#0C3249]/5 rounded-[2rem] -z-20 -rotate-2 transition-transform duration-700 hover:-rotate-4" />
                             
                             <img
-                                src="https://harmless-tapir-303.convex.cloud/api/storage/f508e5fe-f696-4641-8ce1-30803c4c5ff2"
+                                src="https://images.unsplash.com/photo-1585116773539-74eace7ce4a0?q=80&w=2070&auto=format&fit=crop"
                                 alt="Filmmaking in action"
                                 className="w-full h-auto object-cover aspect-[4/3] rounded-2xl shadow-2xl relative z-10"
                             />

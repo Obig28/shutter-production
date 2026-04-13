@@ -105,8 +105,6 @@ const PortfolioSection = () => {
                                 <img
                                     src={item.thumbnail}
                                     alt={item.title}
-                                    loading="lazy"
-                                    decoding="async"
                                     className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-[1.03]"
                                 />
 
@@ -121,13 +119,6 @@ const PortfolioSection = () => {
                                         </div>
                                     </div>
                                 )}
-
-                                {/* Category Tag bottom left like screenshot */}
-                                <div className="absolute bottom-4 left-4">
-                                    <span className="text-white text-base font-black uppercase tracking-widest drop-shadow-md">
-                                        {item.category}
-                                    </span>
-                                </div>
                             </motion.div>
                         ))}
                     </AnimatePresence>
