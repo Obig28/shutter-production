@@ -13,13 +13,13 @@ const slides = [
     },
     {
         id: 2,
-        image: "https://harmless-tapir-303.convex.cloud/api/storage/dc2327da-0b60-4907-9755-35809516d369",
+        image: "https://i.ibb.co/JwQLjCXX/1O3A0067.jpg",
         title: "Cinematic Excellence",
         description: "Leading the industry with state-of-the-art equipment and a passion for storytelling.",
     },
     {
         id: 3,
-        image: "https://harmless-tapir-303.convex.cloud/api/storage/12d5dd8c-8d99-42c1-8095-8ee9a73e4e9e",
+        image: "https://i.ibb.co/spYdd1t4/UNDPXYouth-Konnect2024-214.jpg",
         title: "Professional Production",
         description: "From concept to final edit, we handle every aspect of your visual journey.",
     },
