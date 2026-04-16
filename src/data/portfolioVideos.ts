@@ -191,6 +191,15 @@ export const portfolioItems: PortfolioItem[] = [
         "description": "A selection from our documentary portfolio."
     },
     {
+        "id": 128,
+        "title": "",
+        "category": "Documentary",
+        "thumbnail": "https://img.youtube.com/vi/a9OXIPJvRVY/maxresdefault.jpg",
+        "videoUrl": "https://www.youtube.com/embed/a9OXIPJvRVY",
+        "duration": "",
+        "description": "A selection from our documentary portfolio."
+    },
+    {
         "id": 21,
         "title": "",
         "category": "Documentary",
